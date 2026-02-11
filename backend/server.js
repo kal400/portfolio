@@ -24,18 +24,8 @@ const PORT = process.env.PORT || 5001;
 
 // Middleware
 app.use(cors({
-  origin: function(origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-    
-    // Allow localhost and any Vercel domain
-    if (origin.includes('localhost') || origin.includes('vercel.app')) {
-      return callback(null, true);
-    }
-    
-    return callback(null, true); // Allow all for now
-  },
-  credentials: true,
+  origin: '*',
+  credentials: false,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
